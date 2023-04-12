@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/assets/owl.carousel.min.css">
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <div class="content-wrapper">
+        
+        <div class="content">
+            <h1>Please Wait</h1>
+            <div class="sun">
+              <div class="shadow"></div>
+            </div>
+          </div>
+    </div>
+    
+
+<header>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-wrapper">
+            <a href="https://skilvul.com." class="logo">Muhammad Hasya Nurfaizi</a>
+            <div class="menu-wrapper">
+                <ul class="menu">
+                    <li class="menu-item"><a href="#home" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="#bmi" class="menu-link">BMI Calculator</a></li>
+                    
+                   
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<section class="baru" id="home">
+    <div class="baru-wrapper">
+        <div id="parallax-world-of-ugg">
+  
+            <section>
+              <div class="title">
+                <h3>Body Mass Index Calculator</h3>
+                <h1>Muhammad Hasya Nurfaizi</h1>
+                
+              </div>
+            </section>
+            
+                   
+            
+
+          
+              
+        </div>
+    </div>
+    
+
+
+
+</section>
+
+<section class="bmi" id="bmi" >
+    
+
+    <div class="wrapper">
+        <p>Height in CM:
+            <input type="text" id="height"><br><span id="height_error"></span>
+        </p>
+
+        <p>Weight in KG:
+            <input type="text" id="weight"><br><span id="weight_error"></span>
+        </p>
+
+        <button id="btn">Calculate</button>
+        <p id="output"></p>
+    </div>
+        
+   
+</section>
+
+
+
+<footer class="site-footer">
+    <div class="container footer-wrapper">
+      <div class="row">
+        <div class="col1">
+          <h6>About</h6>
+          <p class="text-justify">  Merupakan landing page untuk tugas Skilvull yang dikerjakan dengan tutorial Youtube dan CodePen. Semoga mendapatkan penilaian yang terbaik!!</p>
+        </div>
+
+        <div class="col2">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Linkedin</a></li>
+            <li><a href="#">Email</a></li>
+            
+          </ul>
+        </div>
+
+        
+      </div>
+      <hr>
+    </div>
+
+
+    <div class="container footer-wrapper">
+      <div class="row2">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
+       <a href="#">Muhammad Hasya Nurfaizi</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12"> 
+          <ul class="social-icons">
+            <li><a class="instagram" href="#"><i class='bx bxl-instagram' ></i></i></a></li>
+            <li><a class="email" href="#"><i class='bx bx-envelope' ></i></a></li>
+            
+            <li><a class="linkedin" href="#"><i class='bx bxl-linkedin'></i></a></li>   
+          </ul>
+        </div>
+      </div>
+    </div>
+</footer>
+ 
+
+
+ 
+
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+        
+
+    <script>
+
+            let button = document.getElementById('btn');
+
+            button.addEventListener('click', () => {
+                const height = parseInt(document.getElementById('height').value);
+                const weight = parseInt(document.getElementById('weight').value);
+                const result = document.getElementById('output');
+                let height_status=false, weight_status=false;
+
+                if(height === '' || isNaN(height) || (height <= 0)){
+                    document.getElementById('height_error').innerHTML = 'Please provide a valid height';
+                }else{
+                    document.getElementById('height_error').innerHTML = '';
+                    height_status=true;
+                }
+
+                if(weight === '' || isNaN(weight) || (weight <= 0)){
+                    document.getElementById('weight_error').innerHTML = 'Please provide a valid weight';
+                }else{
+                    document.getElementById('weight_error').innerHTML = '';
+                    weight_status=true;
+                }
+
+                if(height_status && weight_status){
+                    const bmi = (weight / ((height/100)*(height/100))).toFixed(2);
+
+                    if(bmi <= 18.5){
+                        result.innerHTML = 'Under weight : ' + bmi;
+                    }else if(bmi >= 18.5 && bmi < 24.9){
+                        result.innerHTML = 'Normal weight : ' + bmi;
+                    }else if (bmi >= 25 && bmi <29.9){
+                        result.innerHTML = 'Over weight : ' + bmi;
+                    }else{
+                        result.innerHTML = 'Obesity : ' + bmi;
+                    }
+                }else{
+                    alert('The form has errors');
+                    result.innerHTML = '';
+                }
+            });
+        
+       
+
+
+
+         window.onscroll = function() {myFunction()};
+
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+            navbar.classList.add("navbar");
+
+            function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky",1000, "easeInOutQuad");
+                
+            } else {
+                navbar.classList.remove("sticky",1000, "easeInOutQuad");
+                
+            }
+            }
+
+        Pace.on("done", function(){
+		$(".content-wrapper").delay(2000).fadeOut(600);
+		
+		});
+
+
+
+        window.addEventListener("DOMMouseScroll", handleScroll);
+        window.addEventListener("mousewheel", handleScroll);
+ 
+        function wheelDistance(e) {
+            console.log(e);
+            if (!e) {
+                e = window.event;
+            }
+            var w = e.wheelDelta,
+                d = e.detail;
+            if (d) {
+                return -d / 3; // Firefox;
+            }
+ 
+            // IE, Safari, Chrome & other browsers
+            return w / 120;
+        }
+ 
+        function handleScroll(e) {
+            var delta = wheelDistance(e);
+            console.log(delta);
+            var time = 10000;
+            var distance = 200;
+ 
+            $('html, body').stop().animate({
+                scrollTop: $(window).scrollTop()
+                        - (distance * delta)
+            }, time);
+        }
+
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 300;
+                if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+                } else {
+                reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);            
+    </script>
+</body>
+</html>
